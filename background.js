@@ -23,8 +23,8 @@ function getTime() {
 });
 
 chrome.notifications.onButtonClicked.addListener(function() {
-  chrome.storage.sync.get(['minutes'], function(item) {
+  chrome.storage.sync.get(['remainMinutes'], function(item) {
     chrome.browserAction.setBadgeText({text: 'ON'});
-    chrome.alarms.create({delayInMinutes: item.minutes});
+    chrome.alarms.create({delayInMinutes: item.remainMinutes});
   });
 });
