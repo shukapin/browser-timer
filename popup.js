@@ -17,7 +17,7 @@ function startTimer(event) {
   });
 }
 
-function clearAlarm() {
+function clearTimer() {
   chrome.browserAction.setBadgeText({text: ''});
   chrome.alarms.clearAll();
   chrome.storage.sync.get(['timerTabId'], function (item) {
@@ -26,8 +26,8 @@ function clearAlarm() {
   window.close();
 }
 
-document.getElementById('6sec').addEventListener('click', startTimer);
-document.getElementById('15min').addEventListener('click', startTimer);
-document.getElementById('30min').addEventListener('click', startTimer);
-document.getElementById('60min').addEventListener('click', startTimer);
-document.getElementById('cancelAlarm').addEventListener('click', clearAlarm);
+var items = document.getElementsByClassName('startTimer');
+for (var i = 0; i < items.length; i++) {
+  items[i].addEventListener('click', startTimer);
+}
+document.getElementById('cancelTimer').addEventListener('click', clearTimer);

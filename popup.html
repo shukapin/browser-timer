@@ -1,21 +1,31 @@
 <html>
   <head>
     <title>Timer Setting</title>
-    <style>
-      body {
-        text-align: center;
-      }
-      button {
-        margin: 5px;
-      }
-    </style>
   </head>
   <body>
-      <button id='6sec' value='0.1'>Test</button>
-      <button id='15min' value='15'>15min</button>
-      <button id='30min' value='30'>30min</button>
-      <button id='60min' value='60'>60min</button>
-      <button id='cancelAlarm'>Cancel</button>
+      <button class='startTimer' value='0.1'>Test</button>
+      <button class='startTimer' value='15'>15min</button>
+      <button class='startTimer' value='30'>30min</button>
+      <button class='startTimer' value='60'>60min</button>
+      <button id='cancelTimer'>Cancel</button>
    <script src="popup.js"></script>
   </body>
 </html>
+
+<style>
+  body {
+    text-align: center;
+    background-color: #c5e7af;
+  }
+  button {
+    width: 100px;
+    margin: 5px;
+    display: inline-block;
+    padding: 0.5em 1em;
+    text-decoration: none;
+    background: green;
+    color: #FFF;
+    border-bottom: solid 4px #15491c;
+    border-radius: 3px;
+  }
+</style>
