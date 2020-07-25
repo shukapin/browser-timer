@@ -1,31 +1,31 @@
 'use strict';
 
 var myNotificationID = null;
+var startTime = "";
 
 chrome.alarms.onAlarm.addListener(function() {
   chrome.browserAction.setBadgeText({text: ''});
 
   function getTime() {
     var now = new Date();
-    var Hour = now.getHours();
-    var Min = now.getMinutes();
-    return Hour + ":" + Min;
+    return now.getHours() + ":" + now.getMinutes();
   }
-
-  chrome.notifications.create("", {
-    type:     'basic',
-    iconUrl:  'timer-icon.png',
-    title:    'Time to finish',
-    message:  'Current time: '+ getTime(),
-    requireInteraction: true,
-    buttons: [
-      {title: 'Extend the time'},
-      {title: 'Save at Calendar'}
-    ],
-    priority: 0
-  },
-  function(id) {
-    myNotificationID = id;
+  chrome.storage.sync.get(['startTime'], function(item) {
+    chrome.notifications.create("", {
+      type:     'basic',
+      iconUrl:  'timer-icon.png',
+      title:    'Time to finish',
+      message:  'Working Time: '+ item.startTime + ' - '+ getTime(),
+      requireInteraction: true,
+      buttons: [
+        {title: 'Extend the time'},
+        {title: 'Save at Calendar'}
+      ],
+      priority: 0
+    },
+    function(id) {
+      myNotificationID = id;
+    });
   });
 });
 

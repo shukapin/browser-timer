@@ -2,9 +2,15 @@
 
 function startTimer(event) {
   let remainMinutes = parseFloat(event.target.value);
+  var now = new Date();
+  var startTime = now.getHours() + ":" + now.getMinutes();
+
   chrome.storage.sync.set({remainMinutes: remainMinutes}, function () {});
+  chrome.storage.sync.set({startTime: startTime}, function () {});
 
   console.log("get remainMinites: " + remainMinutes );
+  console.log("get startTime: " + startTime );
+
   chrome.browserAction.setBadgeText({text: 'ON'});
   chrome.alarms.create({delayInMinutes: remainMinutes});
   window.close();
