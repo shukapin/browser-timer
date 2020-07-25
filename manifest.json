@@ -12,6 +12,10 @@
     "default_title": "Timer",
     "default_popup": "popup.html"
   },
+  "options_ui":{
+    "page": "options.html",
+    "chrome_style": true
+  },
   "icons": {
     "16": "timer-icon.png",
     "32": "timer-icon.png",
